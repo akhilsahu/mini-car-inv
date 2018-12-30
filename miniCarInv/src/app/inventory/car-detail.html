@@ -1,0 +1,61 @@
+ <h1 mat-dialog-title>  {{data.tData.model_name}}</h1>
+<div mat-dialog-content> 
+  <mat-card class="example-card-image" *ngFor="let img of data?.iData?.car_pictures;let i=index" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Picture {{i+1}}</mat-card-title>
+    
+  </mat-card-header>
+  <img mat-card-image src="{{shared?.url}}{{img?.src}}" alt="Image">
+  <mat-card-content> </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
+ 	<mat-list>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Manufacturer Name</mat-chip>
+  					<mat-chip> {{data?.tData?.manufacturer_name}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Model Name</mat-chip>
+  					<mat-chip> {{data?.tData?.model_name}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Color</mat-chip>
+  					<mat-chip> {{data?.tData?.color}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Year</mat-chip>
+  					<mat-chip> {{data?.tData?.manufacture_year}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Registration</mat-chip>
+  					<mat-chip> {{data?.tData?.registration_no}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Note</mat-chip>
+  					<mat-chip> {{data?.tData?.note}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+		<mat-list-item>
+			 <mat-chip-list>
+  					<mat-chip>Count</mat-chip>
+  					<mat-chip> {{data?.tData?.count}}</mat-chip>
+  			 </mat-chip-list>  
+  		</mat-list-item>
+	</mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.tData.id" cdkFocusInitial>SOLD</button>
+</div>

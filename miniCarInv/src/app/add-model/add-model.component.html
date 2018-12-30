@@ -1,0 +1,63 @@
+ 
+  <mat-card class="example-card">
+		<mat-card-header>
+				<mat-card-title>Add Model</mat-card-title>
+				<mat-card-subtitle>Please choose a unique name</mat-card-subtitle>
+		</mat-card-header>
+		<mat-divider></mat-divider>
+
+		<mat-card-content>
+	  
+			<form class="example-form" (ngSubmit)="onAddModel()" [formGroup]="mForm">
+				<mat-form-field class="example-half-width">
+					 <mat-select formControlName="manufacturer_id" placeholder="Select Manufacturers">
+					    <mat-option *ngFor="let m  of manufacturer?.manufacturersList" [value]="m?.id">
+					      {{m.name}}
+					    </mat-option>
+					  </mat-select>
+					  <!-- <mat-error *ngIf="manufacturer_id.invalid">Manufacturers is a required</mat-error> -->
+					  <mat-error *ngIf="mForm.controls['manufacturer_id'].hasError('required')"   >Select Manufacture is required</mat-error>
+					  <mat-error   >{{mForm.controls['manufacturer_id'].errors?.backend?.someProp   }}</mat-error>
+ 				</mat-form-field>
+				<mat-form-field class="example-half-width">
+					<input maxlength="180"  #modelName formControlName="model_name"  matInput placeholder="Enter Model"  ><mat-hint align="end">{{modelName.value.length}} / 180</mat-hint>
+		 
+					<mat-error *ngIf="mForm.controls['model_name'].hasError('required')"   >  Modal Name is required</mat-error>
+					 <mat-error   >{{mForm.controls['model_name'].errors?.backend?.someProp   }}</mat-error>		
+				</mat-form-field>
+				<mat-form-field class="example-full-width">
+					<input maxlength="180" #colorText formControlName="color" matInput placeholder="Enter Color"  ><mat-hint align="end">{{colorText.value.length}} / 180</mat-hint>
+					<mat-error *ngIf="mForm.controls['color'].hasError('required')"   >  Color is required</mat-error>	
+					 <mat-error   >{{mForm.controls['color'].errors?.backend?.someProp   }}</mat-error>	
+			 	</mat-form-field>
+				<mat-form-field class="example-full-width">
+					<input  formControlName="manufacture_year" matInput type="number" placeholder="Enter Manufacturing Year"  >
+			 		<mat-error *ngIf="mForm.controls['manufacture_year'].hasError('required')"   >Year is required</mat-error>		
+			 		<mat-error *ngIf="mForm.controls['manufacture_year'].hasError('min')"   >No Car was manufactured before 1886</mat-error>
+			 		<mat-error *ngIf="mForm.controls['manufacture_year'].hasError('max')"   >You can't manufacture a car in the future .</mat-error>
+			 		 <mat-error   >{{mForm.controls['manufacture_year'].errors?.backend?.someProp   }}</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width">
+					<input maxlength="180"  #regNo formControlName="registration_no"  matInput placeholder="Enter Registration Number"  ><mat-hint align="end">{{regNo.value.length}} / 180</mat-hint>
+					<mat-error *ngIf="mForm.controls['registration_no'].hasError('required')"   >Registration number is required</mat-error>
+					 <mat-error   >{{mForm.controls['registration_no'].errors?.backend?.someProp   }}</mat-error>
+		 		</mat-form-field>
+				<mat-form-field class="example-full-width">
+					<input  formControlName="count" matInput type="number" placeholder="Enter Count"  >
+					<mat-error *ngIf="mForm.controls['count'].hasError('required')"   >count is required</mat-error>
+					 <mat-error   >{{mForm.controls['count'].errors?.backend?.someProp   }}</mat-error>
+				 </mat-form-field>
+				<mat-form-field class="example-full-width">
+					 <textarea maxlength="1000" #noteText formControlName="note"  matInput placeholder="Enter note"> 
+					 </textarea > 
+					 <mat-hint align="end">{{noteText.value.length}} / 1000</mat-hint>
+		 			 <mat-error *ngIf="mForm.controls['note'].hasError('required')"   >Note is required</mat-error>
+					 <mat-error   >{{mForm.controls['note'].errors?.backend?.someProp   }}</mat-error>
+				</mat-form-field>	
+				<image-upload></image-upload>
+				<button type="submit" mat-button>SUBMIT</button> 	
+		  
+		  	</form>
+
+	  	</mat-card-content>
+</mat-card>

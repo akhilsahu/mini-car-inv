@@ -1,0 +1,42 @@
+<mat-card class="example-card">
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">NO DATA RECEIVED</div>
+  </div>
+
+  <div class="example-table-container">
+
+    <table mat-table [dataSource]="data"  
+           matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+       <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef>Sr.no</th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{i+1+srno}} </td>
+      </ng-container>
+
+       <ng-container matColumnDef="manufacturer_name">
+        <th mat-header-cell *matHeaderCellDef>Manufacturer Name</th>
+        <td mat-cell *matCellDef="let row">{{row.manufacturer_name}}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="model_name">
+        <th mat-header-cell *matHeaderCellDef>Model Name</th>
+        <td mat-cell *matCellDef="let row">{{row.model_name}}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef   disableClear>
+          Count
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.count }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="showModal(row  )" *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [pageSize]="2" [pageSizeOptions]="[5, 10, 25, 100]" [length]="resultsLength"  ></mat-paginator>
+</div>
+</mat-card>

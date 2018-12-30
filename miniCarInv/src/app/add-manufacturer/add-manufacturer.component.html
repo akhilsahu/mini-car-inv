@@ -1,0 +1,23 @@
+ 
+<mat-card class="example-card">
+		<mat-card-header>
+				<mat-card-title>Add Manufacturer</mat-card-title>
+				<mat-card-subtitle>Please choose a unique name</mat-card-subtitle>
+		</mat-card-header>
+		<mat-divider></mat-divider>
+
+		<mat-card-content>
+	  
+			<form (ngSubmit)="onAddManufacturer()" [formGroup]="mForm">
+				
+				<mat-form-field class="example-full-width">
+					<input matInput placeholder="Enter here" formControlName="name">
+					 <mat-error *ngIf="mForm.controls['name'].hasError('required')"   >Manufacturer's Name is required</mat-error>
+					 <mat-error   >{{mForm.controls['name'].errors?.backend?.someProp   }}</mat-error>
+				</mat-form-field>
+				<button type="submit" mat-button>SUBMIT</button> 	
+		  
+		  	</form>
+
+	  	</mat-card-content>
+</mat-card>

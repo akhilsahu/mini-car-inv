@@ -1,0 +1,32 @@
+ <mat-toolbar>
+ 	 
+		<button routerLink="/add-manufacturers" mat-raised-button color="accent">Add Manufacturers</button>
+
+		<button routerLink="/add-model" mat-raised-button color="primary">Add Models</button>
+		
+		<button routerLink="/view-inventory" mat-raised-button color="warn">View Inventory</button>
+
+</mat-toolbar>
+ 
+	<mat-grid-list cols="4" rowHeight="100px">
+		  <mat-grid-tile 
+		  	  [colspan]="1"
+		      [rowspan]="1"
+		      [style.background]="'red'">
+		   			Add Manufacturers
+		  </mat-grid-tile>  
+
+		  <mat-grid-tile 
+		  	  [colspan]="1"
+		      [rowspan]="1"
+		      [style.background]="'blue'">
+		   			Add Models
+		  </mat-grid-tile>
+
+		    <mat-grid-tile 
+		  	  [colspan]="1"
+		      [rowspan]="1"
+		      [style.background]="'green'">
+		   			View Inventory
+		  </mat-grid-tile>
+	</mat-grid-list>    

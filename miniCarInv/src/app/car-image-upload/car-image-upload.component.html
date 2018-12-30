@@ -1,0 +1,13 @@
+<!--   <input multiple mat-raised-button type="file" color="accent"
+      (change)="uploadFile($event)"
+      accept="image/*"> -->
+      <div>
+	<img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180">
+</div>
+	<button type="button"  mat-raised-button (click)="fileInput.click()">
+  <mat-icon>add</mat-icon>
+  <span>Select..</span>
+  <input #fileInput multiple mat-raised-button type="file" color="accent"
+      (change)="uploadFile($event.target.files)"
+      accept="image/*" style="display:none;" />
+</button>
